@@ -51,19 +51,19 @@ requirements
 ==========================
 
 pip install altgraph  <br/>
-pip install fbs
-pip install future
-pip install macholib
-pip install pefile
-pip install PyQt5
-pip install PyQt5-Qt5
-pip install PyQt5-sip
-pip install PyQtWebEngine
-pip install PyQtWebEngine-Qt
-pip install pywin32-ctypes
-pip install pathlib
-pip install pyperclip
-pip install PyAutoGUI
+pip install fbs <br/>
+pip install future <br/>
+pip install macholib <br/>
+pip install pefile <br/>
+pip install PyQt5 <br/>
+pip install PyQt5-Qt5 <br/>
+pip install PyQt5-sip <br/>
+pip install PyQtWebEngine <br/>
+pip install PyQtWebEngine-Qt <br/>
+pip install pywin32-ctypes <br/>
+pip install pathlib <br/>
+pip install pyperclip <br/>
+pip install PyAutoGUI <br/>
 
 ==========================
 
