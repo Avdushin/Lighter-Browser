@@ -1,8 +1,8 @@
 # LighterBrowser
 
-Authors:
-Mihail Katspshak
-Dobrynya Avdyushin
+Authors: <br/>
+Mihail Katspshak <br/>
+Dobrynya Avdyushin <br/>
 
 A Lighter browser project
 
