@@ -29,7 +29,7 @@ class AboutDialog(QDialog):
         logo.setPixmap(QPixmap(os.path.join('images', 'icon.ico')))
         layout.addWidget(logo)
 
-        layout.addWidget(QLabel("Version 0.1"))
+        layout.addWidget(QLabel("Version 0.2"))
 
         for i in range(0, layout.count()):
             layout.itemAt(i).setAlignment(Qt.AlignHCenter)

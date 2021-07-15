@@ -7,11 +7,13 @@ from PyQt5.QtWidgets import QShortcut
 from PyQt5.QtGui import QKeySequence
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
 from about import AboutDialog
+from loc import ListOfChanges
 import os
 import sys
 import pathlib
 import time
-
+import pyperclip
+import pyautogui as pya
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -110,7 +112,7 @@ class MainWindow(QMainWindow):
         navtb.addAction(next_btn)
 
         reload_btn = QAction(QIcon(os.path.join('images', 'reboot-icon.png')), "reload", self)
-        reload_btn.setStatusTip("reload page")
+        reload_btn.setStatusTip("Reload page")
         reload_btn.triggered.connect(lambda: self.tabs.currentWidget().reload())
         navtb.addAction(reload_btn)
 
@@ -194,6 +196,12 @@ class MainWindow(QMainWindow):
         open_file_action.triggered.connect(self.open_file)
         self.file_menu.addAction(open_file_action)
 
+        ListOfChanges_action = QAction(QIcon(os.path.join('images', 'listofchanges.png')), "List Of Changes", self)
+        ListOfChanges_action.setStatusTip("List Of Changes")
+        ListOfChanges_action.triggered.connect(self.ListOfChanges)
+        self.file_menu.addAction(ListOfChanges_action)
+
+
         save_file_action = QAction(QIcon(os.path.join('images', 'disk--pencil.png')), "Save page to file", self)
         save_file_action.setStatusTip("Open from file")
         save_file_action.triggered.connect(self.save_file)
@@ -229,6 +237,13 @@ class MainWindow(QMainWindow):
 
         self.shortcut_open = QShortcut(QKeySequence('ctrl+n'), self)
         self.shortcut_open.activated.connect(lambda: self.newWindow())
+
+
+        self.shortcut_open = QShortcut(QKeySequence('alt+left'), self)
+        self.shortcut_open.activated.connect(lambda:  self.tabs.currentWidget().back())
+
+        self.shortcut_open = QShortcut(QKeySequence('alt+right'), self)
+        self.shortcut_open.activated.connect(lambda:  self.tabs.currentWidget().forward())
        
 
 
@@ -294,9 +309,19 @@ class MainWindow(QMainWindow):
         menu = QtWidgets.QMenu(self)
         reloadAction = menu.addAction(QIcon(os.path.join('images', 'reboot-icon.png')), "Reload page")
         reloadAction.triggered.connect(lambda: self.tabs.currentWidget().reload())
+
+        #copy
+
+        copyAction = menu.addAction(QIcon(os.path.join('images', 'copy-text.png')), "Copy")
+        copyAction.triggered.connect(lambda:  pyperclip.copy(' '))
         
         innewtabAction = menu.addAction(QIcon(os.path.join('images', 'ui-tab--plus.png')), "Open in new tab")
         innewtabAction.triggered.connect(lambda: self.add_new_tab())
+
+        #paste
+
+        pasteAction = menu.addAction(QIcon(os.path.join('images', 'paste.png')), "Paste")
+        pasteAction.triggered.connect(lambda: pyperclip.paste())
         
         sourceAction = menu.addAction(QIcon(os.path.join('images', 'page-source.png')),"View page source")
         sourceAction.triggered.connect(lambda: self.add_new_tab(qurl=QUrl(url)))
@@ -306,6 +331,24 @@ class MainWindow(QMainWindow):
         action = self.sender()
         print(action.text())
         print(action.data())
+
+    #copy & paste
+
+    def copy_clipboard():
+        pyperclip.copy()
+        pya.hotkey('ctrl', 'c')
+        time.sleep(.01)
+        return pyperclip.paste()
+
+    def double_click_copy():
+    # double clicks on a position of the cursor
+        pya.doubleClick(pya.position())
+
+        var = copy_clipboard()
+        lst.append(var)
+        print(lst)
+        keyboard.wait()
+
 
     def add_new_tab(self, qurl=None, label="Blank"):
         
@@ -363,11 +406,15 @@ class MainWindow(QMainWindow):
             return
 
         title = self.tabs.currentWidget().page().title()
-        self.setWindowTitle("%s About Browser" % title)
+        self.setWindowTitle("%s Lighter Browser" % title)
 
     def about(self):
         dlg = AboutDialog()
         dlg.exec_()
+
+    def ListOfChanges(self):
+        dlgloc = ListOfChanges()
+        dlgloc.exec_()
 
     def open_file(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Open file", "",
