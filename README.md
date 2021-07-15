@@ -8,7 +8,12 @@ A Lighter browser project
 
 <b>INSTALL</b>
 
+<<<<<<< Updated upstream
 # How to run application.
+=======
+pip install -r requirements.txt
+fbs run
+>>>>>>> Stashed changes
 
 path_to\LighterBrowser
 
