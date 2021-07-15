@@ -50,7 +50,7 @@ requirements
 
 ==========================
 
-pip install altgraph
+pip install altgraph  <br/>
 pip install fbs
 pip install future
 pip install macholib
