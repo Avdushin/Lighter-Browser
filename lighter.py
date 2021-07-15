@@ -353,9 +353,8 @@ class MainWindow(QMainWindow):
     def add_new_tab(self, qurl=None, label="Blank"):
         
         if qurl is None:
-            #qurl = QUrl("https://duckduckgo.com")
-            #когда сделаем локальный список приложений
-             qurl = QUrl.fromLocalFile(os.path.dirname(os.path.realpath(__file__)) + '/blank/index.html')
+            qurl = QUrl("https://duckduckgo.com")
+                #qurl = QUrl.fromLocalFile(os.path.dirname(os.path.realpath(__file__)) + '/blank/index.html')
 
         browser = QWebEngineView()
         browser.settings().setAttribute(QWebEngineSettings.ScrollAnimatorEnabled, True)
