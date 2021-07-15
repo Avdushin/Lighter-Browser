@@ -354,7 +354,7 @@ class MainWindow(QMainWindow):
         
         if qurl is None:
             qurl = QUrl("https://duckduckgo.com")
-                #qurl = QUrl.fromLocalFile(os.path.dirname(os.path.realpath(__file__)) + '/blank/index.html')
+            #qurl = QUrl.fromLocalFile(os.path.dirname(os.path.realpath(__file__)) + '/blank/index.html')
 
         browser = QWebEngineView()
         browser.settings().setAttribute(QWebEngineSettings.ScrollAnimatorEnabled, True)
