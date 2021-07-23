@@ -14,7 +14,7 @@ import pathlib
 import time
 import pyperclip
 import pyautogui as pya
-import simple-codecs
+
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
