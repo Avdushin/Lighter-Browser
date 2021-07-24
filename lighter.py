@@ -8,6 +8,7 @@ from PyQt5.QtGui import QKeySequence
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
 from about import AboutDialog
 from loc import ListOfChanges
+from history import History
 import os
 import sys
 import pathlib
@@ -191,6 +192,11 @@ class MainWindow(QMainWindow):
         new_tab_action.setStatusTip("Open new tab")
         new_tab_action.triggered.connect(lambda _: self.add_new_tab())
         self.file_menu.addAction(new_tab_action)
+
+        history_action = QAction(QIcon(os.path.join('images', 'history.png')), "History", self)
+        history_action.setStatusTip("History")
+        history_action.triggered.connect(self.history)
+        self.file_menu.addAction(history_action)
 
         open_file_action = QAction(QIcon(os.path.join('images', 'disk--arrow.png')), "Open file", self)
         open_file_action.setStatusTip("Open from file")
@@ -412,6 +418,10 @@ class MainWindow(QMainWindow):
 
     def about(self):
         dlg = AboutDialog()
+        dlg.exec_()
+
+    def history(self):
+        dlg = History()
         dlg.exec_()
 
     def ListOfChanges(self):
