@@ -8,13 +8,16 @@ A Lighter browser project
 
 <b>INSTALL</b>
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-fbs run
+`fbs run`
 
 # How to run application
 
 pip install -r requirements.txt
+
+<b>For Arch linux</b> USE
+`sudo pacman -S python-tk` 
 
 fbs run
 
