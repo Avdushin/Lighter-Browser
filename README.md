@@ -69,5 +69,3 @@ pip install pyperclip <br/>
 pip install PyAutoGUI <br/>
 
 ==========================
-
-Copyright 2021 © Lighter Browser
